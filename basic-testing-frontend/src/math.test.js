@@ -11,3 +11,23 @@ it('should summarize all number values in an array', ()=> {
   const expectedResult = numbers.reduce((prevValue, curValue)=> prevValue + curValue, 0)
   expect(result).toBe(expectedResult)
 })
+
+it('should yield NaN if a least one invalid number is provided', ()=> {
+  // Arrange
+  const numbers = ['invalid', 1]
+
+  // Act
+  const result = add(numbers)
+
+  // Assert
+  expect(result).toBeNaN()
+})
+
+it('should yield a correct sum if an array of numeric string values is provided', ()=> {
+  const numbers = ['1', '2']
+
+  const result = add(numbers)
+  
+  const expectedResult = numbers.reduce((prevValue, curValue)=> +prevValue + +curValue, 0) // + force to convert string to number
+  expect(result).toBe(expectedResult)
+})
