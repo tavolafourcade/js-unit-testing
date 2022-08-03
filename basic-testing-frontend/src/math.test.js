@@ -31,3 +31,11 @@ it('should yield a correct sum if an array of numeric string values is provided'
   const expectedResult = numbers.reduce((prevValue, curValue)=> +prevValue + +curValue, 0) // + force to convert string to number
   expect(result).toBe(expectedResult)
 })
+
+it('should yield 0 if an empty array is provided', ()=>{
+  const numbers = []
+
+  const result = add(numbers)
+
+  expected(result).toBe(0)
+})
