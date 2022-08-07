@@ -36,4 +36,12 @@ describe('cleanNumbers()', () => {
 
     expect(cleanedNumbers[0]).toBeTypeOf('number')
   })
+
+  it('should throw an error if an array with at least one empty string is provided', () => {
+    const numbersValues = ['', 1]
+    
+    const cleanFn = () => cleanedNumbers(numbersValues)
+
+    expect(cleanFn).toThrow()
+  })
 })
