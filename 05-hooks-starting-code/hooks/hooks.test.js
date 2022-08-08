@@ -3,7 +3,25 @@ import { it, expect, beforeEach, beforeAll, afterEach, afterAll } from 'vitest';
 import { User } from './hooks';
 
 const testEmail = 'test@test.com';
-const user = new User(testEmail);
+let user = new User(testEmail);
+
+// It will execute once before all tests are executed
+beforeAll(() => {
+  console.log('beforeAll()');
+})
+
+beforeEach(() => {
+  console.log('beforeEach()');
+})
+
+afterEach(() => {
+  user = new User(testEmail);
+  console.log('afterEach()');
+})
+
+afterAll(() => {
+  console.log('afterAll()');
+})
 
 it('should update the email', () => {
   const newTestEmail = 'test2@test.com';
