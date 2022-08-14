@@ -16,3 +16,12 @@ it('should throw an error if a non empty string is provided with only blank as a
 
   expect(validationFn).toThrow()
 })
+
+it('should throw an error with the provided error message', () => {
+  const testInput = ''
+  const testErrorMessage = 'Test'
+
+  const validationFn = () => validateNotEmpty(testInput, testErrorMessage) //pattern for testing for errors
+
+  expect(validationFn).toThrow(testErrorMessage)
+})
