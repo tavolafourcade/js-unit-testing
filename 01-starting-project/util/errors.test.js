@@ -1,4 +1,4 @@
-import { HttpError } from './errors'
+import { HttpError, ValidationError } from './errors'
 import { describe, expect, it } from 'vitest'
 
 describe('class HttpError', ()=>{
@@ -23,5 +23,15 @@ describe('class HttpError', ()=>{
     expect(testError.statusCode).toBe(testStatus)
     expect(testError.message).toBe(testMessage)
     expect(testError.data).not.toBeDefined() //toBeUndefined() will work too
+  })
+})
+
+describe('class ValidationError', ()=>{
+  it('should contain the provided message', () => {
+    const testMessage = 'test'
+
+    const testError = new ValidationError(testMessage)
+
+    expect(testError.message).toBe(testMessage)
   })
 })
