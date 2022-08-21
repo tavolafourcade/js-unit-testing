@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path' //Open a file and download its content (open and load index HTML file)
 
-import { it, vi } from 'vitest'
+import { it, vi, expect } from 'vitest'
 import { Window } from 'happy-dom'
 import { showError } from './dom'
 
@@ -14,6 +14,11 @@ document.write(htmlDocumentContent) // Write the content of the index.html file 
 
 vi.stubGlobal('document', document) // Replace the global document object with the one we created
 
-it('first test', ()=> {
-  showError('test')
+it('should add an error paragraph to the id="errors" element', ()=> {
+  showError('Test')
+
+  const errorsEl = document.getElementById('errors')
+  const errorParagraph = errorsEl.firstElementChild
+
+  expect(errorParagraph).not.toBeNull() // Check if the element exists
 })
